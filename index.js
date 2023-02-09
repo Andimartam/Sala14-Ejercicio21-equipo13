@@ -1,13 +1,59 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
+const { Sequelize, Model, DataTypes } = require("sequelize");
+
+const sequelize = new Sequelize(
+  process.env.DB_DATABASE,
+  process.env.DB_USERNAME,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_CONNECTION,
+  }
+);
+
+class Article extends Model {}
+
+Article.init(
+  {
+    id: {
+      primaryKey: true,
+      autoIncrement: true,
+      type: DataTypes.INTEGER,
+    },
+    title: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+    content: {
+      type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    image: {
+      allowNull: true,
+      type: DataTypes.BLOB,
+    },
+    create_date: {
+      allowNull: true,
+      type: DataTypes.DATE,
+    },
+    author: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+    },
+  },
+  { sequelize, modelName: "article", timestamps: false }
+);
 
 /* Comentario */
 app.use(express.urlencoded({ extended: true }));
 
 app.set("view engine", "ejs");
 
-app.get("/", function (req, res) {
-  res.send("Esta vendria a ser la home");
+app.get("/", async function (req, res) {
+  const articles = await Article.findAll();
+  res.json(articles);
 });
 
 app.get("/articulos", function (req, res) {
