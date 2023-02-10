@@ -11,7 +11,7 @@ router.get("/", homeController.index);
 
 //router.post("/articulos/:id", articleController.addComment);
 
-/*router.get("/admin", adminController.index);*/
+router.get("/admin", adminController.index);
 
 //router.get("/admin/crear", adminController.create);
 
@@ -20,8 +20,8 @@ router.get("/", homeController.index);
 router.get("/admin/editar/:id", adminController.edit);
 
 router.post("/admin/editar/:id", adminController.update;
-});
+});*/
 
-router.get("/admin/eliminar/:id", adminController.destroy);*/
+router.get("/admin/eliminar/:id", adminController.destroy);
 
 module.exports = router;
