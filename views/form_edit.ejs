@@ -17,25 +17,32 @@
     <!-- NavBar-->
     <%- include("./partials/navBar") %>
     <!-- End NavBar-->
-    <div class="container-fluid photo-conainter justify-content-center">
-      <div class="container text-center">
-        <h1 class="display-2 homeWord">Hack the blog</h1>
-        <small class="display-5 homeWord">El blog de Hack Academy</small>
-      </div>
-    </div>
-    <section>
-      <div class="container justify-content-center">
-        <div class="row text-center">
-          <div class="col neWcontainer">
-            <% for ( const article of articles) { %>
-            <h2><a href="/articulos/<%=article.id %>"> <%= article.title %> </a></h2>
-            <small>Creado por</small>
-            <hr />
-            <% } %>
-          </div>
+    <div class="container formContainer">
+      <form class="row g-3">
+        <div class="col-md-6">
+          <label for="name" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="name" name="name" />
         </div>
-      </div>
-    </section>
+        <div class="col-md-6">
+          <label for="lastname" class="form-label">Apellido</label>
+          <input type="text" class="form-control" id="lastname" />
+        </div>
+        <div class="mb-3">
+          <label for="articleTitle" class="form-label">Titulo del Articulo</label>
+          <input type="text" class="form-control" id="articleTitle" name="articleTitle" />
+        </div>
+        <div class="mb-3">
+          <label for="articleContent" class="form-label">Contenido del Articulo</label>
+          <textarea
+            class="form-control"
+            id="articleContent"
+            name="articleContent"
+            rows="5"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+      </form>
+    </div>
     <!-- Footer-->
     <%- include("./partials/footer") %>
     <!--End Footer-->

@@ -23,4 +23,4 @@ sequelize.sync({ alter: true }).then(function () {
   console.log("Se han sincronizado");
 });
 
-module.exports = { sequelize, Article };
+module.exports = { sequelize, Article, User, Comment };

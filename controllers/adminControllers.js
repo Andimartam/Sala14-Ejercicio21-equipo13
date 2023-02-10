@@ -16,7 +16,7 @@ async function store(req, res) {
   await Article.create({
     title: `${req.body.title}`,
     content: `${req.body.content}`,
-    image: "algo",
+    image: "../img/homePhoto.jpg",
     create_date: "algo",
   });
   res.render("admin");
