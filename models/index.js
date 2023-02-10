@@ -7,40 +7,20 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     dialect: process.env.DB_CONNECTION,
-  }
-);
-
-class Article extends Model {}
-
-Article.init(
-  {
-    id: {
-      primaryKey: true,
-      autoIncrement: true,
-      type: DataTypes.INTEGER,
-    },
-    title: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
-    content: {
-      type: DataTypes.TEXT,
-      allowNull: false,
-    },
-    image: {
-      allowNull: true,
-      type: DataTypes.BLOB,
-    },
-    create_date: {
-      allowNull: true,
-      type: DataTypes.DATE,
-    },
-    author: {
-      type: DataTypes.STRING(255),
-      allowNull: false,
-    },
+    logging: false,
   },
-  { sequelize, modelName: "article", timestamps: false }
 );
+
+const User = require("./User");
+const Comment = require("./Comment");
+const Article = require("./Article");
+
+User.initModel(sequelize);
+Comment.initModel(sequelize);
+Article.initModel(sequelize);
+
+sequelize.sync({ alter: true }).then(function () {
+  console.log("Se han sincronizado");
+});
 
 module.exports = { sequelize, Article };
