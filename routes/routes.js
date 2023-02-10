@@ -5,13 +5,13 @@ const articleController = require("../controllers/articleControllers");
 const adminController = require("../controllers/adminControllers");
 const router = express.Router();
 
-//router.get("/", homeController.index);
+router.get("/", homeController.index);
 
 //router.get("/articulos/:id", articleController.show);
 
 //router.post("/articulos/:id", articleController.addComment);
 
-router.get("/admin", adminController.index);
+/*router.get("/admin", adminController.index);*/
 
 //router.get("/admin/crear", adminController.create);
 
