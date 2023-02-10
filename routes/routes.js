@@ -11,7 +11,7 @@ router.get("/", homeController.index);
 
 //router.post("/articulos/:id", articleController.addComment);
 
-/*router.get("/admin", adminController.index);*/
+router.get("/admin", adminController.index);
 
 //router.get("/admin/crear", adminController.create);
 
