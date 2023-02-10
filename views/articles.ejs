@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <%-include ("./partials/navbar") %>
+    <div
+      class="continer-fluid text-center mb-5"
+      style="display: flex; flex-direction: column; align-items: center"
+    >
+      <h2>Man must explore, and this is exploration at its greatest</h2>
+      <p><span><%=articlesById.title %></span> <span>y aca el autor</span></p>
+      <div style="width: 60%; border-bottom: 1px solid #e4e4e4">
+        <p><%=articlesById.content %></p>
+      </div>
+      <div
+        class="text-start"
+        style="width: 60%; margin-top: 30px; display: flex; flex-direction: column"
+      >
+        <h6 class="fw-bold">Add your comment</h6>
+        <input
+          type="text"
+          name="name"
+          id=""
+          placeholder="Name"
+          style="margin-bottom: 10px; border: 1px solid #d5d5d5"
+        />
+        <textarea
+          name=""
+          id=""
+          cols="30"
+          rows="10"
+          style="margin-bottom: 10px; border: 1px solid #d5d5d5"
+        ></textarea>
+        <button class="btn btn-primary mb-5">Send</button>
+        <h5 class="fw-bold">Comentario</h5>
+        <div style="border-bottom: 1px solid #e4e4e4">
+          <p></p>
+          <p style="color: #d5d5d5; font-size: small">Autor</p>
+        </div>
+      </div>
+    </div>
+    <%-include ("./partials/footer") %>
+  </body>
+</html>

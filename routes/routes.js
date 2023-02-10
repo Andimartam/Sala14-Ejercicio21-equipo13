@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.get("/", homeController.index);
 
-//router.get("/articulos/:id", articleController.show);
+router.get("/articulos/:id", articleController.show);
 
 //router.post("/articulos/:id", articleController.addComment);
 
