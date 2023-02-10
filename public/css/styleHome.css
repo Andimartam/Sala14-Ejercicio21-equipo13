@@ -7,3 +7,12 @@
 .homeWord {
   color: white;
 }
+
+.home-link {
+  text-decoration: none;
+  color: white;
+}
+
+.home-link:hover {
+  color: white;
+}

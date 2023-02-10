@@ -19,7 +19,7 @@
     <%- include("./partials/navBar") %>
     <!-- End NavBar-->
     <div class="container formContainer">
-      <form class="row g-3" action="/admin/editar/<%=article.id%>" method="post">
+      <form class="row g-3" action="/admin" method="post">
         <div class="col-md-6">
           <label for="firstname" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="firstname" name="firstname" />
@@ -30,14 +30,7 @@
         </div>
         <div class="mb-3">
           <label for="articleTitle" class="form-label">Titulo del Articulo</label>
-          <input
-            type="text"
-            class="form-control"
-            id="articleTitle"
-            name="articleTitle"
-            value="<%=article.title%>"
-            required
-          />
+          <input type="text" class="form-control" id="articleTitle" name="articleTitle" required />
         </div>
         <div class="mb-3">
           <label for="articleContent" class="form-label">Contenido del Articulo</label>
@@ -48,7 +41,6 @@
             rows="5"
             required
           >
-          <%=article.content%>
           </textarea>
         </div>
         <button type="submit" class="btn btn-primary" style="width: fit-content">Guardar</button>

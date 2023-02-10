@@ -13,14 +13,13 @@ router.get("/articulos/:id", articleController.show);
 
 router.get("/admin", adminController.index);
 
-//router.get("/admin/crear", adminController.create);
+router.get("/admin/crear", adminController.create);
 
-/*router.post("/admin", adminController.store);
+router.post("/admin", adminController.store);
 
 router.get("/admin/editar/:id", adminController.edit);
 
-router.post("/admin/editar/:id", adminController.update;
-});*/
+router.post("/admin/editar/:id", adminController.update);
 
 router.get("/admin/eliminar/:id", adminController.destroy);
 

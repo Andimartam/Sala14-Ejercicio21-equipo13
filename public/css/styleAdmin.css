@@ -59,3 +59,22 @@ table {
   border-left: 1px solid #d4dcd2;
   border-right: 1px solid #d4dcd2;
 }
+
+.back-link {
+  text-decoration: none;
+  margin-top: 10rem;
+}
+
+.home-link {
+  text-decoration: none;
+  color: white;
+}
+
+.home-link:hover {
+  color: white;
+}
+.edit-link:hover,
+.create-link:hover,
+.delete-link:hover {
+  color: white;
+}
