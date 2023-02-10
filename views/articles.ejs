@@ -12,6 +12,7 @@
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="/css/styleHome.css" />
   </head>
   <body>
     <%-include ("./partials/navbar") %>
@@ -19,9 +20,17 @@
       class="continer-fluid text-center mb-5"
       style="display: flex; flex-direction: column; align-items: center"
     >
-      <h2>Man must explore, and this is exploration at its greatest</h2>
-      <p><span><%=articlesById.title %></span> <span>y aca el autor</span></p>
-      <div style="width: 60%; border-bottom: 1px solid #e4e4e4">
+      <div
+        class="photo-conainter"
+        style="display: flex; flex-direction: column; justify-content: center; align-items: center"
+      >
+        <h2 style="color: white">Man must explore, and this is exploration at its greatest</h2>
+        <p>
+          <span style="color: #d5d5d5"><%=articlesById.title %></span>
+          <span style="color: #d5d5d5">y aca el autor</span>
+        </p>
+      </div>
+      <div style="width: 60%; border-bottom: 1px solid #e4e4e4; margin-top: 30px">
         <p><%=articlesById.content %></p>
       </div>
       <div

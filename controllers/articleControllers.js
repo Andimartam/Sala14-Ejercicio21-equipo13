@@ -7,7 +7,6 @@ async function show(req, res) {
   const articlesById = await Article.findByPk(id);
 
   res.render("articles", { articlesById, id });
-  console.log(articles[id - 1].content);
 }
 
 module.exports = { show };
