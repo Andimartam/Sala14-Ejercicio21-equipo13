@@ -1,4 +1,4 @@
-const { sequelize, Article, User } = require("../models/index");
+const { sequelize, Article, User, Comment } = require("../models/index");
 
 async function show(req, res) {
   const articles = await Article.findAll();

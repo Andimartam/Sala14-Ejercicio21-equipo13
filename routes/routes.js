@@ -1,5 +1,5 @@
 const express = require("express");
-//const { sequelize, Article, User, Comment } = require("../models/index");
+
 const homeController = require("../controllers/homeControllers");
 const articleController = require("../controllers/articleControllers");
 const adminController = require("../controllers/adminControllers");

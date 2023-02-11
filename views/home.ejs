@@ -29,7 +29,7 @@
           <div class="col neWcontainer">
             <% for ( const article of articles) { %>
             <h2><a href="/articulos/<%=article.id %>"> <%= article.title %> </a></h2>
-            <small>Creado por</small>
+            <small>Creado por <%= article.user.firstname %> <%= article.user.lastname %></small>
             <hr />
             <% } %>
           </div>
