@@ -12,6 +12,7 @@ async function show(req, res) {
 
 async function addComment(req, res) {
   const user = await User.findOne({ where: { mail: req.body.mail } });
+  const id = req.params.id;
 
   await Comment.create({
     content: `${req.body.commentContent}`,
@@ -19,7 +20,7 @@ async function addComment(req, res) {
     articleId: `${req.params.id}`,
     //create_date: `${req.body.create_date}`,
   });
-  res.redirect("/articlulos/:id");
+  res.redirect(`/articulos/${id}`);
 }
 
 module.exports = { show, addComment };
