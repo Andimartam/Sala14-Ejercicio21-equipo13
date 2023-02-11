@@ -1,5 +1,4 @@
 const express = require("express");
-
 const homeController = require("../controllers/homeControllers");
 const articleController = require("../controllers/articleControllers");
 const adminController = require("../controllers/adminControllers");

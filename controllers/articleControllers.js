@@ -1,17 +1,25 @@
 const { sequelize, Article, User, Comment } = require("../models/index");
 
 async function show(req, res) {
-  const articles = await Article.findAll();
-
   const id = req.params.id;
   const articlesById = await Article.findByPk(id);
   const author = await User.findByPk(articlesById.userId);
 
-  res.render("articles", { articlesById, author });
+  const comments = await Comment.findAll({ include: User, where: { articleId: id } });
+
+  res.render("articles", { articlesById, author, comments });
 }
 
 async function addComment(req, res) {
-  res.redirect("/articlulos");
+  const user = await User.findOne({ where: { mail: req.body.mail } });
+
+  await Comment.create({
+    content: `${req.body.commentContent}`,
+    userId: `${user.id}`,
+    articleId: `${req.params.id}`,
+    //create_date: `${req.body.create_date}`,
+  });
+  res.redirect("/articlulos/:id");
 }
 
 module.exports = { show, addComment };

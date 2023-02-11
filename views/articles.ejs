@@ -35,30 +35,42 @@
       <div style="width: 60%; border-bottom: 1px solid #e4e4e4; margin-top: 30px">
         <p><%=articlesById.content %></p>
       </div>
+
       <div
         class="text-start"
         style="width: 60%; margin-top: 30px; display: flex; flex-direction: column"
       >
-        <h6 class="fw-bold">Add your comment</h6>
-        <input
-          type="text"
-          name="name"
-          id=""
-          placeholder="Name"
-          style="margin-bottom: 10px; border: 1px solid #d5d5d5"
-        />
-        <textarea
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-          style="margin-bottom: 10px; border: 1px solid #d5d5d5"
-        ></textarea>
-        <button class="btn btn-primary mb-5">Send</button>
+        <form
+          action="/articulos/:id"
+          method="post"
+          style="margin-top: 30px; display: flex; flex-direction: column"
+        >
+          <h6 class="fw-bold">Add your comment</h6>
+          <input
+            type="text"
+            name="mail"
+            id=""
+            placeholder="Mail"
+            style="margin-bottom: 10px; border: 1px solid #d5d5d5"
+          />
+          <textarea
+            name="commentContent"
+            id=""
+            cols="30"
+            rows="10"
+            style="margin-bottom: 10px; border: 1px solid #d5d5d5"
+          ></textarea>
+          <button type="submit" class="btn btn-primary mb-5">Send</button>
+        </form>
+
         <h5 class="fw-bold">Comentario</h5>
         <div style="border-bottom: 1px solid #e4e4e4">
-          <p></p>
-          <p style="color: #d5d5d5; font-size: small">Autor</p>
+          <% for (const comment of comments){ %>
+          <p><%= comment.content%></p>
+          <p style="color: #d5d5d5; font-size: small">
+            <%= comment.user.firstname %> <%= comment.user.lastname%>
+          </p>
+          <% } %>
         </div>
       </div>
     </div>
