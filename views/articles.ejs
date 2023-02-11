@@ -24,10 +24,12 @@
         class="photo-conainter"
         style="display: flex; flex-direction: column; justify-content: center; align-items: center"
       >
-        <h2 style="color: white">Man must explore, and this is exploration at its greatest</h2>
+        <h2 style="color: white"><%= articlesById.title %></h2>
         <p>
-          <span style="color: #d5d5d5"><%=articlesById.title %></span>
-          <span style="color: #d5d5d5">y aca el autor</span>
+          <span style="color: #d5d5d5"
+            >Creado por <%=author.firstname %> <%= author.lastname %></span
+          >
+          <!--<span style="color: #d5d5d5">y aca  fecha</span>-->
         </p>
       </div>
       <div style="width: 60%; border-bottom: 1px solid #e4e4e4; margin-top: 30px">

@@ -44,7 +44,9 @@
                   <img src="<%=article.image%>" alt="#" width="80" height="80" />
                 </td>
                 <td class="border-table"><%= article.create_date %></td>
-                <td class="border-table"><%= article.userId %></td>
+                <td class="border-table">
+                  <%= article.user.firstname%> <%= article.user.lastname%>
+                </td>
                 <td class="td-action border-table">
                   <a href="/admin/editar/<%=article.id%>" class="link edit-link">Editar</a>
                   <a href="/admin/eliminar/<%=article.id%>" class="link delete-link">Eliminar</a>

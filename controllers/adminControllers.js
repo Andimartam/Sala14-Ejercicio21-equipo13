@@ -1,8 +1,8 @@
-const { sequelize, Article } = require("../models/index");
+const { sequelize, Article, User } = require("../models/index");
 
 //ir a pag admin
 async function index(req, res) {
-  const articles = await Article.findAll();
+  const articles = await Article.findAll({ include: User });
   res.render("admin", { articles });
 }
 
@@ -13,10 +13,12 @@ async function create(req, res) {
 
 //crear articulo en db
 async function store(req, res) {
+  const author = await User.findOne({ where: { mail: req.body.mail } });
   await Article.create({
     title: `${req.body.articleTitle}`,
     content: `${req.body.articleContent}`,
     image: "../img/homePhoto.jpg",
+    userId: `${author.id}`,
     //create_date: "algo",
   });
   res.redirect("/admin");

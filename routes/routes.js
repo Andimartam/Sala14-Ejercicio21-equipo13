@@ -9,7 +9,7 @@ router.get("/", homeController.index);
 
 router.get("/articulos/:id", articleController.show);
 
-//router.post("/articulos/:id", articleController.addComment);
+router.post("/articulos/:id", articleController.addComment);
 
 router.get("/admin", adminController.index);
 

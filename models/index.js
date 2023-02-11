@@ -19,6 +19,15 @@ User.initModel(sequelize);
 Comment.initModel(sequelize);
 Article.initModel(sequelize);
 
+User.hasMany(Article);
+Article.belongsTo(User);
+/*
+Article.hasMany(Comment);
+Comment.belongsTo(Article);
+
+User.hasMany(Comment);
+Comment.belongsTo(User);*/
+
 sequelize.sync({ alter: true }).then(function () {
   console.log("Se han sincronizado");
 });
