@@ -7,6 +7,7 @@ async function index(req, res) {
   res.render("admin", { articles });
 }
 
+//mostrar pag de un art
 async function show(req, res) {
   const id = req.params.id;
   const articlesById = await Article.findByPk(id);
@@ -23,16 +24,22 @@ async function create(req, res) {
 }
 
 //crear articulo en db
-async function store(req, res) {
-  const author = await User.findOne({ where: { mail: req.body.mail } });
-  await Article.create({
-    title: `${req.body.articleTitle}`,
-    content: `${req.body.articleContent}`,
-    image: "../img/homePhoto.jpg",
-    userId: `${author.id}`,
-    //create_date: "algo",
+function store(req, res) {
+  const form = formidable({
+    multiples: true,
+    uploadDir: __dirname + "/../public/img",
+    keepExtensions: true,
   });
-  res.redirect("/admin");
+  form.parse(req, async (err, fields, files) => {
+    const author = await User.findOne({ where: { mail: fields.mail } });
+    await Article.create({
+      title: fields.articleTitle,
+      content: fields.articleContent,
+      image: files.image.newFilename,
+      userId: author.id,
+    });
+    res.redirect("/admin");
+  });
 }
 
 //ir a pag de edit
@@ -42,18 +49,25 @@ async function edit(req, res) {
 }
 
 //edita un articulo en db
-async function update(req, res) {
-  await Article.update(
-    {
-      title: `${req.body.articleTitle}`,
-      content: `${req.body.articleContent}`,
-      //create_date: `${req.body.create_date}`,
-    },
-    {
-      where: { id: `${req.params.id}` },
-    },
-  );
-  res.redirect("/admin");
+function update(req, res) {
+  const form = formidable({
+    multiples: true,
+    uploadDir: __dirname + "/../public/img",
+    keepExtensions: true,
+  });
+  form.parse(req, async (err, fields, files) => {
+    await Article.update(
+      {
+        title: fields.articleTitle,
+        content: fields.articleContent,
+        image: files.image.newFilename,
+      },
+      {
+        where: { id: `${req.params.id}` },
+      },
+    );
+    res.redirect("/admin");
+  });
 }
 
 //eliminar articulo de la db

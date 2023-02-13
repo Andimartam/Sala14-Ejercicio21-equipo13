@@ -41,9 +41,14 @@
                 <td class="border-table"><%= article.title %></td>
                 <td class="border-table"><%= article.content.substring(0, 210) %>...</td>
                 <td class="border-table">
-                  <img src="<%=article.image%>" alt="#" width="80" height="80" />
+                  <img
+                    src="/img/<%=article.image%>"
+                    alt="imagen del articulo"
+                    width="80"
+                    height="80"
+                  />
                 </td>
-                <td class="border-table"><%= article.create_date %></td>
+                <td class="border-table"><%= article.createdAt %></td>
                 <td class="border-table">
                   <%= article.user.firstname%> <%= article.user.lastname%>
                 </td>

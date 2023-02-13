@@ -22,4 +22,6 @@ router.post("/admin/editar/:id", articleController.update);
 
 router.get("/admin/eliminar/:id", articleController.destroy);
 
+router.get("/api/articulos", pageController.showApiArticles);
+
 module.exports = router;

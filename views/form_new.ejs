@@ -19,7 +19,7 @@
     <%- include("./partials/navBar") %>
     <!-- End NavBar-->
     <div class="container formContainer">
-      <form class="row g-3" action="/admin" method="post">
+      <form class="row g-3" action="/admin" method="post" enctype="multipart/form-data">
         <!--<div class="col-md-6">
           <label for="firstname" class="form-label">Nombre</label>
           <input type="text" class="form-control" id="firstname" name="firstname" />
@@ -47,6 +47,11 @@
           >
           </textarea>
         </div>
+        <div class="mb-3">
+          <label for="image" class="form-label">Imagen</label>
+          <input type="file" class="form-control" id="image" name="image" required />
+        </div>
+
         <button type="submit" class="btn btn-primary" style="width: fit-content">Guardar</button>
       </form>
 

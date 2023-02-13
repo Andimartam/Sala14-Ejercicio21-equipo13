@@ -21,12 +21,8 @@ class Article extends Model {
           allowNull: true,
           type: DataTypes.BLOB,
         },
-        create_date: {
-          allowNull: true,
-          type: DataTypes.DATE,
-        },
       },
-      { sequelize, modelName: "article", timestamps: false },
+      { sequelize, modelName: "article", timestamps: true, createdAt: true, updatedAt: false },
     );
     return Article;
   }
