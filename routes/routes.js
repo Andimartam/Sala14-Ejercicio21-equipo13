@@ -1,25 +1,25 @@
 const express = require("express");
-const homeController = require("../controllers/homeControllers");
+const pageController = require("../controllers/pagesControllers");
 const articleController = require("../controllers/articleControllers");
-const adminController = require("../controllers/adminControllers");
+const commentController = require("../controllers/commentControllers");
 const router = express.Router();
 
-router.get("/", homeController.index);
+router.get("/", pageController.index);
 
 router.get("/articulos/:id", articleController.show);
 
-router.post("/articulos/:id", articleController.addComment);
+router.post("/articulos/:id", commentController.addComment);
 
-router.get("/admin", adminController.index);
+router.get("/admin", articleController.index);
 
-router.get("/admin/crear", adminController.create);
+router.get("/admin/crear", articleController.create);
 
-router.post("/admin", adminController.store);
+router.post("/admin", articleController.store);
 
-router.get("/admin/editar/:id", adminController.edit);
+router.get("/admin/editar/:id", articleController.edit);
 
-router.post("/admin/editar/:id", adminController.update);
+router.post("/admin/editar/:id", articleController.update);
 
-router.get("/admin/eliminar/:id", adminController.destroy);
+router.get("/admin/eliminar/:id", articleController.destroy);
 
 module.exports = router;

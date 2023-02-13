@@ -17,21 +17,33 @@
     <!-- NavBar-->
     <%- include("./partials/navBar") %>
     <!-- End NavBar-->
-    <div class="container-fluid photo-conainter justify-content-center">
+    <div
+      style="display: flex; flex-direction: column; justify-content: center; align-items: center"
+      class="container-fluid photo-containter"
+    >
       <div class="container text-center">
-        <h1 class="display-2 homeWord">Hack the blog</h1>
-        <small class="display-5 homeWord">El blog de Hack Academy</small>
+        <h1 class="display-1 homeWord">Hack the blog</h1>
+        <small class="homeSubTittle">El blog de Hack Academy</small>
       </div>
     </div>
     <section>
-      <div class="container justify-content-center">
-        <div class="row text-center">
-          <div class="col neWcontainer">
-            <% for ( const article of articles) { %>
-            <h2><a href="/articulos/<%=article.id %>"> <%= article.title %> </a></h2>
-            <small>Creado por <%= article.user.firstname %> <%= article.user.lastname %></small>
-            <hr />
-            <% } %>
+      <div
+        style="display: flex; flex-direction: column; justify-content: center; align-items: center"
+        class="container"
+      >
+        <div class="article-place justify-content-center">
+          <div class="row text-center">
+            <div class="col">
+              <% for ( const article of articles) { %>
+              <h2>
+                <a class="linkTittle" href="/articulos/<%=article.id %>"> <%= article.title %> </a>
+              </h2>
+              <small class="italic"
+                >Creado por <%= article.user.firstname %> <%= article.user.lastname %></small
+              >
+              <hr />
+              <% } %>
+            </div>
           </div>
         </div>
       </div>
