@@ -2,7 +2,7 @@
 # Defaults de NODE obtenidos aquí:
 # https://github.com/github/gitignore.
 # ----------------------------------------------------------------------------
-/public/img
+# /public/img
 
 # Logs
 logs
