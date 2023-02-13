@@ -10,29 +10,27 @@
 DROP TABLE IF EXISTS `comments`;
 CREATE TABLE `comments` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `content` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `articleId` int DEFAULT NULL,
+  `content` text COLLATE utf8mb4_general_ci NOT NULL,
   `userId` int DEFAULT NULL,
+  `articleId` int DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `articleId` (`articleId`),
   KEY `userId` (`userId`),
-  CONSTRAINT `comments_ibfk_21` FOREIGN KEY (`articleId`) REFERENCES `articles` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `comments_ibfk_22` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+  KEY `articleId` (`articleId`),
+  CONSTRAINT `comments_ibfk_7` FOREIGN KEY (`userId`) REFERENCES `users` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  CONSTRAINT `comments_ibfk_8` FOREIGN KEY (`articleId`) REFERENCES `articles` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `comments` (`id`, `content`, `articleId`, `userId`) VALUES
-(1, 'Comment 1:  Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis sequi nulla necessitatibus qui! Quasi tenetur officiis aliquid dolorem delectus eveniet? Quis ipsa est qui voluptate dolor enim facilis iusto itaque in alias aut perspiciatis pariatur assumenda quod at magni ut nam error autem soluta deserunt, vel animi eius! Harum, error!', 1, 2);
-INSERT INTO `comments` (`id`, `content`, `articleId`, `userId`) VALUES
-(2, 'Comment 2: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis sequi nulla necessitatibus qui! Quasi tenetur officiis aliquid dolorem delectus eveniet? Quis ipsa est qui voluptate dolor enim facilis iusto itaque in alias aut perspiciatis pariatur assumenda quod at magni ut nam error autem soluta deserunt, vel animi eius! Harum, error!', 2, 2);
-INSERT INTO `comments` (`id`, `content`, `articleId`, `userId`) VALUES
-(3, 'Comment 3: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis sequi nulla necessitatibus qui! Quasi tenetur officiis aliquid dolorem delectus eveniet? Quis ipsa est qui voluptate dolor enim facilis iusto itaque in alias aut perspiciatis pariatur assumenda quod at magni ut nam error autem soluta deserunt, vel animi eius! Harum, error!', 3, 1);
-INSERT INTO `comments` (`id`, `content`, `articleId`, `userId`) VALUES
-(4, 'Comment 4:Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis sequi nulla necessitatibus qui! Quasi tenetur officiis aliquid dolorem delectus eveniet? Quis ipsa est qui voluptate dolor enim facilis iusto itaque in alias aut perspiciatis pariatur assumenda quod at magni ut nam error autem soluta deserunt, vel animi eius! Harum, error!', NULL, 2),
-(5, 'Comment 5:Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis sequi nulla necessitatibus qui! Quasi tenetur officiis aliquid dolorem delectus eveniet? Quis ipsa est qui voluptate dolor enim facilis iusto itaque in alias aut perspiciatis pariatur assumenda quod at magni ut nam error autem soluta deserunt, vel animi eius! Harum, error!', 5, 3),
-(6, 'Comment 6:Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis sequi nulla necessitatibus qui! Quasi tenetur officiis aliquid dolorem delectus eveniet? Quis ipsa est qui voluptate dolor enim facilis iusto itaque in alias aut perspiciatis pariatur assumenda quod at magni ut nam error autem soluta deserunt, vel animi eius! Harum, error!', 1, 3),
-(7, 'Comment 7:Lorem, ipsum dolor sit amet consectetur adipisicing elit. Perferendis sequi nulla necessitatibus qui! Quasi tenetur officiis aliquid dolorem delectus eveniet? Quis ipsa est qui voluptate dolor enim facilis iusto itaque in alias aut perspiciatis pariatur assumenda quod at magni ut nam error autem soluta deserunt, vel animi eius! Harum, error!', 2, 3),
-(8, 'Prueba luego de modularizar ', 1, 1),
-(9, 'Me gusto mucho el post ! ', 1, 1);
+INSERT INTO `comments` (`id`, `content`, `userId`, `articleId`) VALUES
+(1, 'Me gusta mucho este post ! ', 1, 1);
+INSERT INTO `comments` (`id`, `content`, `userId`, `articleId`) VALUES
+(2, 'Muy interesante de verdad ! ', 3, 1);
+INSERT INTO `comments` (`id`, `content`, `userId`, `articleId`) VALUES
+(3, 'Espero que Uruguay gane el mundial ! ', 2, 2);
+INSERT INTO `comments` (`id`, `content`, `userId`, `articleId`) VALUES
+(4, 'Muy bien los gurises ! ', 1, 2),
+(5, 'Necesito esta nueva linea !!!!', 3, 3),
+(6, 'Esperando ya que salga este celular ! necesito uno nuevo ', 1, 4),
+(7, 'Cada cuanto se tiene que cambiar el celular ?', 3, 4);
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

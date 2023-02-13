@@ -49,7 +49,9 @@ async function edit(req, res) {
 }
 
 //edita un articulo en db
-function update(req, res) {
+async function update(req, res) {
+  const article = await Article.findByPk((id = req.params.id));
+  console.log(article);
   const form = formidable({
     multiples: true,
     uploadDir: __dirname + "/../public/img",
