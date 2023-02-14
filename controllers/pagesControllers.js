@@ -14,4 +14,25 @@ async function showApiArticles(req, res) {
   res.json(articles);
 }
 
-module.exports = { index, showApiArticles, create };
+async function login(req, res) {
+  res.render("login");
+}
+
+app.get("/welcome", function (req, res) {
+  if (req.isAuthenticated()) {
+    res.send(`Te damos la bienvenida, ${req.user.firstname}!!`);
+  } else {
+    res.redirect("/login");
+  }
+});
+
+app.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/login",
+    //failureFlash: true,
+  })
+);
+
+module.exports = { index, showApiArticles, create, login };
