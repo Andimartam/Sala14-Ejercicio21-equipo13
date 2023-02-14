@@ -12,16 +12,17 @@ CREATE TABLE `users` (
   `id` int NOT NULL AUTO_INCREMENT,
   `firstname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `lastname` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
+  `password` varchar(255) COLLATE utf8mb4_general_ci NOT NULL,
   `mail` varchar(50) COLLATE utf8mb4_general_ci NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `mail`) VALUES
-(1, 'Leia', 'Organa', 'leia@gmail.com');
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `mail`) VALUES
-(2, 'Han', 'Solo', 'han@gmail.com');
-INSERT INTO `users` (`id`, `firstname`, `lastname`, `mail`) VALUES
-(3, 'Boba', 'Fett', 'boba@gmail.com');
+INSERT INTO `users` (`id`, `firstname`, `lastname`,`password`, `mail`) VALUES
+(1, 'Leia', 'Organa', 'password1234', 'leia@gmail.com');
+INSERT INTO `users` (`id`, `firstname`, `lastname`,`password`, `mail`) VALUES
+(2, 'Han', 'Solo', 'password1234', 'han@gmail.com');
+INSERT INTO `users` (`id`, `firstname`, `lastname`,`password`, `mail`) VALUES
+(3, 'Boba', 'Fett', 'password1234', 'boba@gmail.com');
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

@@ -17,6 +17,10 @@ class User extends Model {
           type: DataTypes.STRING(255),
           allowNull: false,
         },
+        password: {
+          type: DataTypes.STRING(255),
+          allowNull: false,
+        },
         mail: {
           allowNull: false,
           type: DataTypes.STRING(50),
