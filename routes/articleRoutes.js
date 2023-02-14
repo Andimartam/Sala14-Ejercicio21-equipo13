@@ -1,14 +1,9 @@
 const express = require("express");
 const pageController = require("../controllers/pagesControllers");
 const articleController = require("../controllers/articleControllers");
-const commentController = require("../controllers/commentControllers");
 const router = express.Router();
 
-router.get("/", pageController.index);
-
 router.get("/articulos/:id", articleController.show);
-
-router.post("/articulos/:id", commentController.addComment);
 
 router.get("/admin", articleController.index);
 
