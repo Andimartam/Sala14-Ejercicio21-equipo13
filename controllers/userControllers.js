@@ -1,8 +1,8 @@
 const { sequelize, Article, User } = require("../models/index");
-const bcrypt = require('bcryptjs');
-const express = require('express');
+const bcrypt = require("bcryptjs");
+const express = require("express");
 const router = require("../routes/articleRoutes");
-const passport = require('passport');
+const passport = require("passport");
 
 async function store(req, res) {
   // First we define the constants with the parameters we get from the forms.
@@ -28,12 +28,4 @@ async function store(req, res) {
   }
 }
 
-const login = router.post(
-  "/login",
-  passport.authenticate("local", {
-    successRedirect: "/welcome",
-    failureRedirect: "/login",
-  }),
-);
-
-module.exports = { store, login };
+module.exports = { store };
