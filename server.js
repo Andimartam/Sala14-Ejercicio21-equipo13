@@ -2,6 +2,7 @@ require("dotenv").config();
 const express = require("express");
 const routes = require("./routes/index");
 const app = express();
+const bcrypt = require("bcryptjs");
 
 /*------------------------------------*/
 const session = require("express-session");
@@ -22,17 +23,17 @@ app.use(passport.session());
 passport.use(
   new LocalStrategy(
     {
-      usernameField: "email",
+      usernameField: "mail",
       passwordField: "password",
     },
     async function (username, password, done) {
       try {
-        const user = await User.findOne({ where: { email: username } });
+        const user = await User.findOne({ where: { mail: username } });
         if (!user) {
           console.log("fallo el usuario");
           return done(null, false, { message: "Credenciales incorrectas" });
         }
-        const enteredPassword = req.body.password;
+        const enteredPassword = password;
         const storedPassword = user.password;
         const passwordCheck = await bcrypt.compare(enteredPassword, storedPassword);
         if (!passwordCheck) {
