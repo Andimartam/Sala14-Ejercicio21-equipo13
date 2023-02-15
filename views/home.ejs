@@ -17,14 +17,17 @@
     <!-- NavBar-->
     <%- include("./partials/navBar") %>
     <!-- End NavBar-->
-    <a href="/registrar/usuario">Nuevo usuario</a>
     <div
       style="display: flex; flex-direction: column; justify-content: center; align-items: center"
       class="container-fluid photo-containter"
     >
       <div class="container text-center">
         <h1 class="display-1 homeWord">Hack the blog</h1>
+        <% if(locals.user) { %>
+        <small class="homeSubTittle">El blog de Hack Academy, bienvenido <%= locals.user.firstname %> <%= locals.user.lastname %>.</small>
+        <% } else { %>
         <small class="homeSubTittle">El blog de Hack Academy</small>
+        <% } %>
       </div>
     </div>
     <section>

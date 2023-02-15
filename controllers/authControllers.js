@@ -5,7 +5,7 @@ const express = require("express");
 const router = express.Router();
 
 const login = passport.authenticate("local", {
-    successRedirect: "/welcome",
+    successRedirect: "/",
     failureRedirect: "/login",
   });
 

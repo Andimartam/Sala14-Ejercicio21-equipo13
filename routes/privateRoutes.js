@@ -10,7 +10,6 @@ app.use(makeUserAvailableInViews);
 
 app.use(isAuthenticated);
 
-router.get("/welcome", privateControllers.welcome);
 router.get("/logout", privateControllers.logout);
 
 router.get("/admin", articleController.index);

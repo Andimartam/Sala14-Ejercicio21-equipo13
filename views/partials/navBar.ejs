@@ -2,12 +2,12 @@
 <nav class="navbar" style="background-color: black">
   <div class="container">
     <span class="navbar-brand mb-0 h1"><a href="/" class="home-link">Hack the blog</a></span>
-    <% if (loggedUser) { %>
+    <% if (locals.user) { %>
     <a class="btn btn-primary" href="/admin" role="button">Admin</a>
     <a class="btn btn-danger" href="/logout" role="button">Log out</a>
-    <% } %>
-    <% if (!loggedUser) { %>
+    <% } else { %>
     <a class="btn btn-success" href="/login" role="button">Log in</a>
+    <a class="btn btn-primary" href="/registrar/usuario">Nuevo usuario</a>
     <% } %>
   </div>
 </nav>
