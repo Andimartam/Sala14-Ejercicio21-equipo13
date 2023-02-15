@@ -35,24 +35,17 @@
       <div style="width: 60%; border-bottom: 1px solid #e4e4e4; margin-top: 30px">
         <p><%=articlesById.content %></p>
       </div>
-
       <div
         class="text-start"
         style="width: 60%; margin-top: 30px; display: flex; flex-direction: column"
       >
+      <% if(loggedUser) { %>
         <form
           action="/articulos/<%= articlesById.id %>"
           method="post"
           style="margin-top: 30px; display: flex; flex-direction: column"
         >
           <h6 class="fw-bold">Add your comment</h6>
-          <input
-            type="text"
-            name="mail"
-            id=""
-            placeholder="Mail"
-            style="margin-bottom: 10px; border: 1px solid #d5d5d5"
-          />
           <textarea
             name="commentContent"
             id=""
@@ -62,7 +55,7 @@
           ></textarea>
           <button type="submit" class="btn btn-primary mb-5">Send</button>
         </form>
-
+        <% } %>
         <h5 class="fw-bold">Comentario (<%= comments.length %>)</h5>
         <div style="border-bottom: 1px solid #e4e4e4">
           <% for (const comment of comments){ %>

@@ -3,7 +3,8 @@ const formidable = require("formidable");
 
 //ir a pag admin
 async function index(req, res) {
-  const articles = await Article.findAll({ include: User });
+  const loggedUser = req.user;
+  const articles = await Article.findAll({ include: User, where: { userId: loggedUser.id } });
   res.render("admin", { articles });
 }
 
@@ -12,10 +13,11 @@ async function show(req, res) {
   const id = req.params.id;
   const articlesById = await Article.findByPk(id);
   const author = await User.findByPk(articlesById.userId);
+  const loggedUser = req.user;
 
   const comments = await Comment.findAll({ include: User, where: { articleId: id } });
 
-  res.render("articles", { articlesById, author, comments });
+  res.render("articles", { articlesById, author, comments, loggedUser });
 }
 
 //ir a pag crear

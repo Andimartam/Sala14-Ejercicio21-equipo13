@@ -2,7 +2,13 @@
 <nav class="navbar" style="background-color: black">
   <div class="container">
     <span class="navbar-brand mb-0 h1"><a href="/" class="home-link">Hack the blog</a></span>
+    <% if (loggedUser) { %>
     <a class="btn btn-primary" href="/admin" role="button">Admin</a>
+    <a class="btn btn-danger" href="/logout" role="button">Log out</a>
+    <% } %>
+    <% if (!loggedUser) { %>
+    <a class="btn btn-success" href="/login" role="button">Log in</a>
+    <% } %>
   </div>
 </nav>
 <!-- As a heading -->
