@@ -24,28 +24,28 @@
         class="photo-containter-article"
         style="display: flex; flex-direction: column; justify-content: center; align-items: center"
       >
-        <h2 style="color: white"><%= articlesById.title %></h2>
+        <h2 style="color: white"><%= article.title %></h2>
         <p>
           <span style="color: #d5d5d5"
-            >Creado por <%=author.firstname %> <%= author.lastname %></span
+            >Creado por <%=article.user.firstname %> <%= article.user.lastname %></span
           >
-          <span style="color: #d5d5d5">el <%= articlesById.createdAt %></span>
+          <span style="color: #d5d5d5">el <%= article.createdAt %></span>
         </p>
       </div>
       <div style="width: 60%; border-bottom: 1px solid #e4e4e4; margin-top: 30px">
-        <p><%=articlesById.content %></p>
+        <p><%=article.content %></p>
       </div>
       <div
         class="text-start"
         style="width: 60%; margin-top: 30px; display: flex; flex-direction: column"
       >
-      <% if(user) { %>
+        <% if(user) { %>
         <form
-          action="/articulos/<%= articlesById.id %>"
+          action="/articulos/<%= article.id %>"
           method="post"
           style="margin-top: 30px; display: flex; flex-direction: column"
         >
-          <h6 class="fw-bold">Add your comment</h6>
+          <h6 class="fw-bold">Agregar un comentario</h6>
           <textarea
             name="commentContent"
             id=""
@@ -56,13 +56,15 @@
           <button type="submit" class="btn btn-primary mb-5">Send</button>
         </form>
         <% } %>
-        <h5 class="fw-bold">Comentario (<%= comments.length %>)</h5>
+        <h5 class="fw-bold">Comentarios (<%= comments.length %>)</h5>
         <div style="border-bottom: 1px solid #e4e4e4">
           <% for (const comment of comments){ %>
-          <p><%= comment.content%></p>
-          <p style="color: #d5d5d5; font-size: small">
+          <p class="mt-3"><%= comment.content%></p>
+          <span style="color: #d5d5d5; font-size: small; display: block">
             <%= comment.user.firstname %> <%= comment.user.lastname%>
-          </p>
+          </span>
+          <a href="/articulos/editar-comentario/<%= comment.id %>">Editar</a>
+          <a href="/articulos/eliminar-comentario/<%= comment.id %>">Eliminar</a>
           <% } %>
         </div>
       </div>

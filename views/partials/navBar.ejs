@@ -3,11 +3,11 @@
   <div class="container">
     <span class="navbar-brand mb-0 h1"><a href="/" class="home-link">Hack the blog</a></span>
     <% if (user) { %>
-    <a class="btn btn-primary" href="/admin" role="button">Admin</a>
+    <a class="btn btn-primary ms-auto me-2" href="/admin" role="button">Admin</a>
     <a class="btn btn-danger" href="/logout" role="button">Log out</a>
     <% } else { %>
-    <a class="btn btn-success" href="/login" role="button">Log in</a>
-    <a class="btn btn-primary" href="/registrar/usuario">Nuevo usuario</a>
+    <a class="btn btn-success ms-auto me-2" href="/login" role="button">Log in</a>
+    <a class="btn btn-primary" href="/registrar/usuario">Registrarse</a>
     <% } %>
   </div>
 </nav>

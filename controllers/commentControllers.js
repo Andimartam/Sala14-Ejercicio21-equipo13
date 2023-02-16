@@ -13,4 +13,27 @@ async function addComment(req, res) {
   res.redirect(`/articulos/${id}`);
 }
 
-module.exports = { addComment };
+async function showEditComment(req, res) {
+  const comment = await Comment.findByPk(req.params.id);
+  res.render("editComment", { comment });
+}
+
+async function editComment(req, res) {
+  const comment = await Comment.findByPk(req.params.id);
+  await Comment.update(
+    { content: req.body.commentContent },
+    {
+      where: { id: `${req.params.id}` },
+    },
+  );
+  res.redirect(`/articulos/${comment.articleId}`);
+}
+
+async function deleteComment(req, res) {
+  const comment = await Comment.findByPk(req.params.id);
+
+  await Comment.destroy({ where: { id: `${req.params.id}` } });
+  res.redirect(`/articulos/${comment.articleId}`);
+}
+
+module.exports = { addComment, showEditComment, editComment, deleteComment };

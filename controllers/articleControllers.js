@@ -3,20 +3,25 @@ const formidable = require("formidable");
 
 //ir a pag admin
 async function index(req, res) {
-  const loggedUser = req.user;
-  const articles = await Article.findAll({ include: User, where: { userId: loggedUser.id } });
-  res.render("admin", { articles });
+  if (req.user.roleId > 2) {
+    const articles = await Article.findAll({ include: User });
+    res.render("admin", { articles });
+  } else {
+    const loggedUser = req.user;
+    const articles = await Article.findAll({ include: User, where: { userId: loggedUser.id } });
+    res.render("admin", { articles });
+  }
 }
 
 //mostrar pag de un art
 async function show(req, res) {
   const id = req.params.id;
-  const articlesById = await Article.findByPk(id);
-  const author = await User.findByPk(articlesById.userId);
+  const article = await Article.findOne({ include: User, where: { id: id } });
+  //const author = await User.findByPk(article.userId);
 
   const comments = await Comment.findAll({ include: User, where: { articleId: id } });
 
-  res.render("articles", { articlesById, author, comments });
+  res.render("articles", { article, comments });
 }
 
 //ir a pag crear
@@ -47,7 +52,11 @@ function store(req, res) {
 //ir a pag de edit
 async function edit(req, res) {
   const article = await Article.findByPk(req.params.id);
-  res.render("form_edit", { article });
+  if (req.user.roleId > 2 || req.user.id === article.userId) {
+    res.render("form_edit", { article });
+  } else {
+    res.send("No permission to do this");
+  }
 }
 
 //edita un articulo en db
@@ -74,8 +83,13 @@ async function update(req, res) {
 
 //eliminar articulo de la db
 async function destroy(req, res) {
-  await Article.destroy({ where: { id: `${req.params.id}` } });
-  res.redirect("/admin");
+  const article = await Article.findByPk(req.params.id);
+  if (req.user.roleId > 3 || req.user.id === article.userId) {
+    await Article.destroy({ where: { id: `${req.params.id}` } });
+    res.redirect("/admin");
+  } else {
+    res.send("No permission to do this");
+  }
 }
 
 module.exports = { index, create, store, edit, update, destroy, show };

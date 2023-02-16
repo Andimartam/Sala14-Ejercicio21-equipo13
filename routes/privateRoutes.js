@@ -5,6 +5,7 @@ const isAuthenticated = require("../middleware/isAuthenticated");
 const articleController = require("../controllers/articleControllers");
 const app = express();
 const makeUserAvailableInViews = require("../middleware/makeUserAvailableInViews");
+const isWriter = require("../middleware/isWriter");
 
 app.use(makeUserAvailableInViews);
 
@@ -12,16 +13,16 @@ app.use(makeUserAvailableInViews);
 
 router.get("/logout", privateControllers.logout);
 
-router.get("/admin", articleController.index);
+router.get("/admin", isWriter, articleController.index);
 
-router.get("/admin/crear", articleController.create);
+router.get("/admin/crear", isWriter, articleController.create);
 
-router.post("/admin", articleController.store);
+router.post("/admin", isWriter, articleController.store);
 
-router.get("/admin/editar/:id", articleController.edit);
+router.get("/admin/editar/:id", isWriter, articleController.edit);
 
-router.post("/admin/editar/:id", articleController.update);
+router.post("/admin/editar/:id", isWriter, articleController.update);
 
-router.get("/admin/eliminar/:id", articleController.destroy);
+router.get("/admin/eliminar/:id", isWriter, articleController.destroy);
 
 module.exports = router;

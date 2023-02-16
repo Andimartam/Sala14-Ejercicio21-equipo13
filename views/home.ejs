@@ -23,8 +23,10 @@
     >
       <div class="container text-center">
         <h1 class="display-1 homeWord">Hack the blog</h1>
-        <% if(locals.user) { %>
-        <small class="homeSubTittle">El blog de Hack Academy, bienvenido <%= locals.user.firstname %> <%= locals.user.lastname %>.</small>
+        <% if(user) { %>
+        <small class="homeSubTittle"
+          >El blog de Hack Academy, bienvenido <%= user.firstname %> <%= user.lastname %>.</small
+        >
         <% } else { %>
         <small class="homeSubTittle">El blog de Hack Academy</small>
         <% } %>

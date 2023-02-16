@@ -14,10 +14,12 @@ const sequelize = new Sequelize(
 const User = require("./User");
 const Comment = require("./Comment");
 const Article = require("./Article");
+const Role = require("./Role");
 
 User.initModel(sequelize);
 Comment.initModel(sequelize);
 Article.initModel(sequelize);
+Role.initModel(sequelize);
 
 User.hasMany(Article);
 Article.belongsTo(User);
@@ -28,8 +30,7 @@ Comment.belongsTo(User);
 Article.hasMany(Comment);
 Comment.belongsTo(Article);
 
-sequelize.sync({ alter: true }).then(function () {
-  console.log("Se han sincronizado");
-});
+Role.hasMany(User);
+User.belongsTo(Role);
 
 module.exports = { sequelize, Article, User, Comment };

@@ -18,7 +18,7 @@
     <section>
       <div class="container page-content mt-5">
         <div class="table-title">
-          <h3>Articles</h3>
+          <h3>Articulos</h3>
           <a href="/admin/crear" class="link create-link">Nuevo</a>
         </div>
         <div class="articles-list mt-3">
@@ -26,27 +26,38 @@
             <thead>
               <tr>
                 <td class="td-id pt-1 pe-2 border-table">ID</td>
-                <td class="td-title pt-1 pe-2 border-table">Title</td>
-                <td class="td-content pt-1 pe-2 border-table">Content</td>
-                <td class="td-author pt-1 pe-2 border-table">Image</td>
-                <td class="td-author pt-1 pe-2 border-table">Created At</td>
-                <td class="td-author pt-1 pe-2 border-table">Author</td>
-                <td class="td-action pt-1 pe-2 border-table">Actions</td>
+                <td class="td-title pt-1 pe-2 border-table">Titulo</td>
+                <td class="td-content pt-1 pe-2 border-table">Contenido</td>
+                <td class="td-author pt-1 pe-2 border-table">Imagen</td>
+                <td class="td-author pt-1 pe-2 border-table">Creado en</td>
+                <td class="td-author pt-1 pe-2 border-table">Autor</td>
+                <td class="td-action pt-1 pe-2 border-table">Acciones</td>
               </tr>
             </thead>
             <tbody>
+              <!--------- vista para roleId 3 y 4----------->
+              <!----->
               <% for (const article of articles) { %>
               <tr>
                 <td class="border-table"><%= article.id %></td>
                 <td class="border-table"><%= article.title %></td>
                 <td class="border-table"><%= article.content.substring(0, 210) %>...</td>
                 <td class="border-table">
+                  <% if(article.image.includes("http")) {%>
+                  <img
+                    src="<%=article.image%>"
+                    alt="imagen del articulo <%=article.title%>"
+                    width="80"
+                    height="80"
+                  />
+                  <% } else {%>
                   <img
                     src="/img/<%=article.image%>"
                     alt="imagen del articulo <%=article.title%>"
                     width="80"
                     height="80"
                   />
+                  <% } %>
                 </td>
                 <td class="border-table"><%= article.createdAt %></td>
                 <td class="border-table">
@@ -55,10 +66,11 @@
                 <td class="td-action border-table">
                   <a href="/admin/editar/<%=article.id%>" class="link edit-link d-block mb-2"
                     >Editar</a
-                  >
+                  ><% if (user.roleId > 3 || (user.id === article.user.id ) ) {%>
                   <a href="/admin/eliminar/<%=article.id%>" class="link delete-link d-block"
                     >Eliminar</a
                   >
+                  <% } %>
                 </td>
               </tr>
               <% } %>
