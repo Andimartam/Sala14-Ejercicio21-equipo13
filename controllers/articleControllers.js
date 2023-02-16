@@ -13,11 +13,10 @@ async function show(req, res) {
   const id = req.params.id;
   const articlesById = await Article.findByPk(id);
   const author = await User.findByPk(articlesById.userId);
-  const loggedUser = req.user;
 
   const comments = await Comment.findAll({ include: User, where: { articleId: id } });
 
-  res.render("articles", { articlesById, author, comments, loggedUser });
+  res.render("articles", { articlesById, author, comments });
 }
 
 //ir a pag crear
@@ -33,7 +32,8 @@ function store(req, res) {
     keepExtensions: true,
   });
   form.parse(req, async (err, fields, files) => {
-    const author = await User.findOne({ where: { mail: fields.mail } });
+    const loggedUser = req.user;
+    const author = await User.findOne({ where: { mail: loggedUser.mail } });
     await Article.create({
       title: fields.articleTitle,
       content: fields.articleContent,

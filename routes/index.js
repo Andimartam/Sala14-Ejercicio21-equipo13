@@ -4,6 +4,7 @@ const commentRoutes = require("./commentRoutes");
 const userRoutes = require("./userRoutes");
 const privateRoutes = require("./privateRoutes");
 const makeUserAvailableInViews = require("../middleware/makeUserAvailableInViews");
+const isAuthenticated = require("../middleware/isAuthenticated");
 
 module.exports = (app) => {
   app.use(makeUserAvailableInViews);
@@ -11,5 +12,6 @@ module.exports = (app) => {
   app.use(articleRoutes);
   app.use(publicRoutes);
   app.use(commentRoutes);
+  app.use(isAuthenticated);
   app.use(privateRoutes);
 };

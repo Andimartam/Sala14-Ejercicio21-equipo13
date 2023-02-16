@@ -23,7 +23,7 @@ class User extends Model {
         },
         mail: {
           allowNull: false,
-          type: DataTypes.STRING(50),
+          type: DataTypes.STRING(50), // unique
         },
       },
       { sequelize, modelName: "user", timestamps: false },

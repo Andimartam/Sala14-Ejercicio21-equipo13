@@ -24,7 +24,7 @@ async function store(req, res) {
   } catch (error) {
     // If the "try" fails, the "catch" will hand the error, in this case there's one possible error,
     // the try will fail if the email is already registered for another user.
-    res.render("errorTemplate", { error });
+    res.send(error);
   }
 }
 

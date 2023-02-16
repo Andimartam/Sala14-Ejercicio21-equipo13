@@ -8,7 +8,7 @@ const makeUserAvailableInViews = require("../middleware/makeUserAvailableInViews
 
 app.use(makeUserAvailableInViews);
 
-app.use(isAuthenticated);
+//app.use(isAuthenticated);
 
 router.get("/logout", privateControllers.logout);
 
