@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/css/styleAdmin.css" />
+    <title>Usuarios</title>
+  </head>
+  <body>
+    <header><%- include("./partials/navBar") %></header>
+    <section>
+      <div class="container page-content mt-5">
+        <div class="table-title">
+          <h3>Usuarios</h3>
+          <a href="/admin" class="link create-link ms-3">Ver articulos</a>
+          <a href="/registrar/usuario" class="link create-link ms-auto">Nuevo Usuario</a>
+        </div>
+        <div class="articles-list mt-3">
+          <table>
+            <thead>
+              <tr>
+                <td class="td-id pt-1 pe-2 border-table">ID</td>
+                <td class="td-title pt-1 pe-2 border-table">Nombre</td>
+                <td class="td-content pt-1 pe-2 border-table">Apellido</td>
+                <td class="td-content pt-1 pe-2 border-table">Rol</td>
+                <td class="td-author pt-1 pe-2 border-table">Mail</td>
+                <td class="td-action pt-1 pe-2 border-table">Acciones</td>
+              </tr>
+            </thead>
+            <tbody>
+              <!--------- vista para roleId 3 y 4----------->
+              <!----->
+              <% for (const userInTable of usersInTable) { %>
+              <tr>
+                <td class="border-table"><%= userInTable.id %></td>
+                <td class="border-table"><%= userInTable.firstname %></td>
+                <td class="border-table"><%= userInTable.lastname %></td>
+                <td class="border-table"><%= userInTable.role.name %></td>
+                <td class="border-table"><%= userInTable.mail %></td>
+                <td class="td-action border-table">
+                  <a
+                    href="/usuarios/editar/<%= userInTable.id %>"
+                    class="link edit-link d-block mb-2"
+                    >Editar</a
+                  >
+                  <a
+                    href="/usuarios/eliminar/<%= userInTable.id %>"
+                    class="link delete-link d-block"
+                    >Eliminar</a
+                  >
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+    <%- include("./partials/footer") %>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

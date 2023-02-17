@@ -1,8 +1,7 @@
 const session = require("express-session");
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
-const { User } = require("../models");
-const bcrypt = require("bcryptjs");
+const { User, Role } = require("../models");
 
 module.exports = (app) => {
   app.use(
@@ -25,14 +24,14 @@ module.exports = (app) => {
         try {
           const user = await User.findOne({ where: { mail: username } });
           if (!user) {
-            console.log("fallo el usuario");
+            //console.log("fallo el usuario");
             return done(null, false, { message: "Credenciales incorrectas" });
           }
           const enteredPassword = password;
-          const storedPassword = user.password;
-          const passwordCheck = await bcrypt.compare(enteredPassword, storedPassword);
+          //const storedPassword = user.password;
+          const passwordCheck = await user.isValidPassword(enteredPassword);
           if (!passwordCheck) {
-            console.log("fallo la contraseña");
+            //console.log("fallo la contraseña");
             return done(null, false, { message: "Credenciales incorrectas" });
           }
           return done(null, user);
@@ -49,7 +48,7 @@ module.exports = (app) => {
 
   passport.deserializeUser(async function (id, done) {
     try {
-      const user = await User.findByPk(id);
+      const user = await User.findByPk(id, { include: Role });
       done(null, user);
     } catch (error) {
       done(error);

@@ -6,6 +6,7 @@ async function index(req, res) {
 }
 
 async function create(req, res) {
+  if (req.user && req.user.role.code < 400) return res.redirect("/");
   res.render("createUser");
 }
 

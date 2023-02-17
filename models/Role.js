@@ -13,6 +13,9 @@ class Role extends Model {
           type: DataTypes.STRING(255),
           allowNull: false,
         },
+        code: {
+          type: DataTypes.INTEGER,
+        },
       },
       { sequelize, modelName: "role", timestamps: false },
     );

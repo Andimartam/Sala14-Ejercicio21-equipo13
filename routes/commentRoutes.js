@@ -1,14 +1,10 @@
 const express = require("express");
 const commentController = require("../controllers/commentControllers");
 const router = express.Router();
-const makeUserAvailableInViews = require("../middleware/makeUserAvailableInViews");
 const isEditor = require("../middleware/isEditor");
+const isReader = require("../middleware/isReader");
 
-const app = express();
-
-app.use(makeUserAvailableInViews);
-
-router.post("/articulos/:id", commentController.addComment);
+router.post("/articulos/:id", isReader, commentController.addComment);
 router.get("/articulos/editar-comentario/:id", isEditor, commentController.showEditComment);
 router.post("/articulos/editar-comentario/:id", isEditor, commentController.editComment);
 router.get("/articulos/eliminar-comentario/:id", isEditor, commentController.deleteComment);

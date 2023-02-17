@@ -3,8 +3,14 @@
   <div class="container">
     <span class="navbar-brand mb-0 h1"><a href="/" class="home-link">Hack the blog</a></span>
     <% if (user) { %>
-    <a class="btn btn-primary ms-auto me-2" href="/admin" role="button">Admin</a>
-    <a class="btn btn-danger" href="/logout" role="button">Log out</a>
+    <span class="ms-auto me-4" style="color: white">
+      <%= user.firstname %> <%= user.lastname %></span
+    >
+    <a class="btn btn-danger me-2" href="/logout" role="button">Log out</a>
+    <% if (user.role.code >= 200){ %>
+    <a class="btn btn-primary" href="/admin" role="button">Admin</a>
+    <% } %>
+    <!---->
     <% } else { %>
     <a class="btn btn-success ms-auto me-2" href="/login" role="button">Log in</a>
     <a class="btn btn-primary" href="/registrar/usuario">Registrarse</a>

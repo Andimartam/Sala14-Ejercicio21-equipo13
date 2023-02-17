@@ -59,12 +59,23 @@
         <h5 class="fw-bold">Comentarios (<%= comments.length %>)</h5>
         <div style="border-bottom: 1px solid #e4e4e4">
           <% for (const comment of comments){ %>
+          <!---->
           <p class="mt-3"><%= comment.content%></p>
+          <% for (const user of users){ %>
+          <!---->
+          <% if (user.id === comment.userId){ %>
           <span style="color: #d5d5d5; font-size: small; display: block">
-            <%= comment.user.firstname %> <%= comment.user.lastname%>
+            <%= user.firstname %> <%= user.lastname%>
           </span>
+          <% break %>
+          <!---->
+          <% } %> <% } %>
+          <!---->
+          <% if (user && user.role.code >= 300){ %>
           <a href="/articulos/editar-comentario/<%= comment.id %>">Editar</a>
           <a href="/articulos/eliminar-comentario/<%= comment.id %>">Eliminar</a>
+          <% } %>
+          <!---->
           <% } %>
         </div>
       </div>

@@ -19,7 +19,10 @@
       <div class="container page-content mt-5">
         <div class="table-title">
           <h3>Articulos</h3>
-          <a href="/admin/crear" class="link create-link">Nuevo</a>
+          <% if (user.role.code >= 400) { %>
+          <a href="/usuarios" class="link create-link ms-3">Ver usuarios</a>
+          <% } %>
+          <a href="/admin/crear" class="link create-link ms-auto">Nuevo Articulo</a>
         </div>
         <div class="articles-list mt-3">
           <table>
@@ -66,7 +69,7 @@
                 <td class="td-action border-table">
                   <a href="/admin/editar/<%=article.id%>" class="link edit-link d-block mb-2"
                     >Editar</a
-                  ><% if (user.roleId > 3 || (user.id === article.user.id ) ) {%>
+                  ><% if (user.role.code >= 400 || (user.id === article.user.id ) ) {%>
                   <a href="/admin/eliminar/<%=article.id%>" class="link delete-link d-block"
                     >Eliminar</a
                   >
