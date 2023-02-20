@@ -33,15 +33,16 @@ async function create(req, res) {
 }
 
 //crear articulo en db
-function store(req, res) {
-  try {
-    const form = formidable({
-      multiples: true,
-      uploadDir: __dirname + "/../public/img",
-      keepExtensions: true,
-    });
-    form.parse(req, async (err, fields, files) => {
-      const loggedUser = req.user;
+async function store(req, res) {
+  //try {
+  const form = formidable({
+    multiples: true,
+    uploadDir: __dirname + "/../public/img",
+    keepExtensions: true,
+  });
+  form.parse(req, async (err, fields, files) => {
+    const loggedUser = req.user;
+    try {
       const author = await User.findOne({ where: { mail: loggedUser.mail } });
       await Article.create({
         title: fields.articleTitle,
@@ -50,12 +51,12 @@ function store(req, res) {
         userId: author.id,
       });
       res.redirect("/admin");
-    });
-  } catch (error) {
-    // If the "try" fails, the "catch" will hand the error, in this case there's one possible error,
-    // the try will fail if the email is already registered for another user.
-    res.send(error);
-  }
+    } catch (error) {
+      // If the "try" fails, the "catch" will hand the error, in this case there's one possible error,
+      // the try will fail if the email is already registered for another user.
+      res.send(error);
+    }
+  });
 }
 
 //ir a pag de edit

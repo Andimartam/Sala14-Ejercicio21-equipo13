@@ -6,7 +6,7 @@ const { User, Role } = require("../models");
 module.exports = (app) => {
   app.use(
     session({
-      secret: "mysecret",
+      secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
     }),

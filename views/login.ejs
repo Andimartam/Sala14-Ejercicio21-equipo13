@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Crear nuevo usuario</title>
+    <title>Login</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -58,6 +58,9 @@
           <div class="invalid-feedback">El campo contraseña es obligatorio.</div>
         </div>
         <button id="login" class="btn btn-dark">Ingresar</button>
+        <% if (failLoginMessage) { %>
+        <p><%= failLoginMessage %></p>
+        <% } %>
       </form>
       <a class="pt-5 d-block text-decoration-none" href="http://localhost:3000">← Volver</a>
     </div>

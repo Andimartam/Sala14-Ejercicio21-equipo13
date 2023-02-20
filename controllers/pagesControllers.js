@@ -10,13 +10,8 @@ async function create(req, res) {
   res.render("createUser");
 }
 
-async function showApiArticles(req, res) {
-  const articles = await Article.findAll({ include: User });
-  res.json(articles);
-}
-
 async function login(req, res) {
   res.render("login");
 }
 
-module.exports = { index, showApiArticles, create, login };
+module.exports = { index, create, login };

@@ -34,6 +34,18 @@
         action="/registrar/usuario"
       >
         <div class="mb-3">
+          <label for="mail" class="form-label">Mail del usuario *</label>
+          <input
+            type="text"
+            class="form-control"
+            id="mail"
+            placeholder="Ingresar mail..."
+            name="mail"
+            required
+          />
+          <div class="invalid-feedback">El campo mail es obligatorio.</div>
+        </div>
+        <div class="mb-3">
           <label for="firstName" class="form-label">Nombre del usuario *</label>
           <input
             type="text"
@@ -67,21 +79,13 @@
             name="password"
             required
           />
-          <div class="invalid-feedback">El campo apellido es obligatorio.</div>
-        </div>
-        <div class="mb-3">
-          <label for="mail" class="form-label">Mail del usuario *</label>
-          <input
-            type="text"
-            class="form-control"
-            id="mail"
-            placeholder="Ingresar mail..."
-            name="mail"
-            required
-          />
-          <div class="invalid-feedback">El campo apellido es obligatorio.</div>
+          <div class="invalid-feedback">El campo contraseña es obligatorio.</div>
         </div>
         <button id="createUser" class="btn btn-dark">Guardar usuario</button>
+        <% if (failRegisterMessage) { %>
+        <p class="mt-2"><%= failRegisterMessage %></p>
+        <% } %>
+        <p class="mt-2">Si ya estas registrado, prueba iniciar sesión <a href="/login">aqui</a></p>
       </form>
       <a class="pt-5 d-block text-decoration-none" href="http://localhost:3000">← Volver</a>
     </div>

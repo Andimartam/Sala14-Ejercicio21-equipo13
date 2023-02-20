@@ -3,6 +3,7 @@ const { sequelize, Article, User, Role } = require("../models/index");
 async function store(req, res) {
   if (req.user && req.user.role.code < 400) return res.redirect("/");
   // First we define the constants with the parameters we get from the forms.
+  req.flash("failed-register", "Este mail ya tiene un usuario.");
   const firstname = req.body.firstName;
   const lastname = req.body.lastName;
   const mail = req.body.mail;
@@ -23,7 +24,7 @@ async function store(req, res) {
     if (created) {
       req.login(user, () => res.redirect("/"));
     } else {
-      res.redirect("/login");
+      res.redirect("/registrar/usuario");
     }
   } catch (error) {
     // If the "try" fails, the "catch" will hand the error, in this case there's one possible error,
